@@ -1,0 +1,1416 @@
+@charset "UTF-8";
+
+/*!
+* 
+* JUL 2022
+* int-meetings.com
+* jblanco
+* 
+*/
+
+
+/* MEDIA BREAKPOINTS ------------------------------------------------
+
+@media (min-width: 576px) {}    sm
+@media (min-width: 768px) {}    md
+@media (min-width: 992px) {}    lg
+@media (min-width: 1200px) {}   xl
+@media (min-width: 1400px) {}   xxl
+
+-------------------------------------------------------------------- */
+
+@page {
+	margin: 5%;
+}
+
+
+
+:root {
+
+	--color-bg-main: #f3f3f1;
+	--color-bg-main-darken: #ebebeb;
+	--color-button: azure;
+	--color-button-hover: #82e6ff;
+	--color-button-off: #f5c1c5;
+	--color-button-off-darken: #f17781;
+
+	--color-table-line: #a4a4a4;
+	--color-gray-light: whitesmoke;
+	--color-gray-soft: #cfcfcf;
+	--color-gray-hard: #212529;
+	--color-gray-3: #565A5D;
+
+
+	--color-field: ivory;
+	--color-field-focus: #719ECE;
+	--color-checked: #abf1d4;
+	--color-checked-on: #39c420;
+
+	--dropdown-link-active-bg: #212529 !important;
+
+
+
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	:root {
+		scroll-behavior: smooth;
+	}
+}
+
+
+@font-face {
+	font-family: 'Gilroy-ExtraBold';
+	src: url(/fonts/Gilroy-Extrabold.woff2) format('woff2'),
+		url(/fonts/Gilroy-Extrabold.woff) format('woff'),
+		url(/fonts/Gilroy-Extrabold.ttf) format('truetype');
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+}
+
+
+
+
+
+/* COMUNES =========================================================== */
+
+html {
+	font-size: 14px;
+	/* Tamaño para 1rem */
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+	background-color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 200;
+}
+
+
+
+.clearfix {
+	clear: both;
+	float: none;
+}
+
+.disabled {
+	opacity: 0.45 !important;
+	pointer-events: none !important;
+}
+
+.no-pointer {
+	pointer-events: none;
+}
+
+.hide {
+	display: none !important;
+}
+
+.noborde {
+	border: 0 !important;
+}
+
+.fadeOut {
+	animation: fadeOut 0.5s;
+}
+
+.fadeIn {
+	animation: fadeIn 0.5s;
+}
+
+
+.flex-break {
+	flex-basis: 100%;
+	height: 0;
+}
+
+
+.toWhite {
+	filter: brightness(100);
+}
+
+
+input:focus {
+	outline: none !important;
+	border-color: var(--color-field-focus);
+	box-shadow: 0 0 10px var(--color-field-focus);
+}
+
+textarea:focus {
+	outline: none !important;
+	border-color: var(--color-field-focus);
+	box-shadow: 0 0 10px var(--color-field-focus);
+}
+
+.error-field {
+	border-color: var(--bs-danger);
+	box-shadow: 0 0 10px var(--bs-danger);
+}
+
+
+
+.bg-main {
+	background-color: var(--bg-main);
+}
+
+.bg-main-darken {
+	background-color: var(--color-bg-main-darken);
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.bg-gray-light {
+	background-color: var(--color-gray-light);
+}
+
+
+.border-error {
+	border-color: #ff0000 !important;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.5) !important;
+}
+
+.no-resize {
+	resize: none;
+}
+
+#menu .btn {
+	border: none;
+}
+
+
+/*LOGO periodontograma */
+.logo-periodontograma {
+	font-family: 'Gilroy-ExtraBold';
+	font-size: 2.6rem;
+	font-weight: 900;
+	margin-bottom: 0;
+}
+
+.logo-periodontograma span {
+	color: #515151;
+}
+
+
+
+
+/**
+ * Diseño de tablas
+ * ======================================================*/
+table {
+	width: 100%;
+}
+
+table tr td {
+	height: 22px;
+	vertical-align: middle;
+	border: 0;
+}
+
+table tr td.borde {
+	border: 1px solid var(--color-table-line);
+	padding: 1px;
+	width: 64px;
+	min-width: 64px;
+	max-width: 64px;
+	text-align: center;
+	height: 23px;
+	/* definitivo? */
+
+	background-color: var(--color-bg-main);
+}
+
+@media (max-width: 1199px) {
+	table tr td.borde {
+		min-width: auto;
+	}
+}
+
+@media (max-width: 979px) {
+	table tr td.borde {
+		min-width: auto;
+		width: auto;
+	}
+}
+
+@media (max-width: 979px) and (orientation: portrait) {
+	table tr td.borde {
+		max-width: 5vw;
+	}
+}
+
+
+
+table tr td input,
+table tr td .nota {
+	width: 16px;
+	border: 0;
+	font-size: 10px;
+	background-color: var(--color-field);
+	text-align: center;
+}
+
+@media (max-width: 1199px) {
+	table tr td input {
+		width: 25%;
+	}
+}
+
+
+
+/* Títulos tablas ----------------------- */
+.titulo-area-superiorinferior {
+	width: 50%;
+	margin: auto;
+	margin-left: 29.25%;
+	margin-top: 40px;
+}
+
+.titulo {
+	font-size: 11px;
+	padding: 0 5px;
+	min-width: 54px;
+	width: 68px;
+	white-space: nowrap;
+	text-align: right;
+}
+
+.titulo.zona {
+	font-size: 16px;
+	color: var(--color-gray-3);
+}
+
+@media (max-width: 1199px) {
+	.titulo {
+		font-size: 10px;
+		max-width: 60px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+.num-tooth {
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 1.8em;
+}
+
+
+
+/* Helpers tablas ---------------------- */
+.flex-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.separador-vert {
+	border-left: 1px solid var(--color-table-line);
+}
+
+.fix-height div:first-of-type {
+	float: left;
+}
+
+.fix-height div:last-of-type {
+	float: right;
+}
+
+.bg-stripped-off {
+	background-image: linear-gradient(45deg, var(--color-gray-soft) 25%, var(--color-bg-main) 25%, var(--color-bg-main) 50%, var(--color-gray-soft) 50%, var(--color-gray-soft) 75%, var(--color-bg-main) 75%, var(--color-bg-main) 100%);
+	background-size: 5.66px 5.66px;
+}
+
+
+/* Botones tablas ------------------------- */
+.bot {
+	position: relative;
+	background: var(--color-button);
+	height: 20px;
+}
+
+.bot:hover {
+	cursor: pointer;
+	background: var(--color-button-hover);
+}
+
+.bot.bot-half {
+	width: 45%;
+	display: inline-block;
+}
+
+.bot.bot-third {
+	width: 27%;
+	display: inline-block;
+}
+
+.bot.bot-off {
+	background: var(--color-button-off);
+	color: white;
+}
+
+.bot.bot-off:hover {
+	background: var(--color-button-off-darken);
+	color: white;
+}
+
+.bot.bot-checked-dot:after {
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	content: "";
+	width: 10px;
+	height: 10px;
+	margin-left: -5px;
+	border-radius: 50%;
+	background: #6495ed;
+}
+
+
+
+
+/**
+ *  Barra inferior fija
+ * =========================================================== */
+#bottom-bar {
+	box-shadow: 0 0 50px rgb(0 0 0 / 30%);
+}
+
+.tabla-resultados-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+
+
+
+/** 
+ * Select con aspecto de botón, sin flecha lateral
+ * Utiliado en el campo 'Pronóstico Individual' 
+ * =========================================================== */
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	outline: 0;
+	box-shadow: none;
+	border: 0 !important;
+	background: var(--color-button);
+	background-image: none;
+	flex: 1;
+	padding: 0 4px;
+	color: #212529;
+	cursor: pointer;
+	font-size: 10px;
+	text-align: center;
+}
+
+select option {
+	color: #212529;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+.select {
+	position: relative;
+	display: flex;
+	width: calc(100% - 2px);
+	height: 20px;
+	margin: auto;
+	font-size: 10px;
+	line-height: 2;
+	background: var(--color-button);
+	overflow: hidden;
+	text-align: center;
+}
+
+.select::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	pointer-events: none;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+
+.select:hover::after {
+	background: var(--color-button-hover);
+}
+
+
+
+
+
+
+/**
+ * Campo de texto 'Nota' se hace grande al seleccionarlo (:focus)
+ */
+table tr td .nota {
+	text-align: left;
+	min-width: 100%;
+	height: 20px;
+	vertical-align: bottom;
+	resize: none;
+}
+
+.nota-wrapper {
+	position: relative;
+}
+
+.nota-wrapper:focus textarea,
+.nota-wrapper textarea:focus {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 200px;
+	height: 50px;
+	font-size: 12px;
+	padding: 0 5px;
+	box-shadow: 0 0px 20px 2px rgb(0 0 0 / 40%);
+	resize: none;
+}
+
+
+
+/* FURCAs
+ * =================================================================== */
+
+/* botón furca */
+[id^="f"]:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 12px;
+	height: 12px;
+	margin-left: -8px;
+	font-size: 18px;
+	color: #826ef3;
+}
+
+/* Furca simple */
+[id^="diente"] [id^="furca"]:not([id$="-a"]):not([id$="-b"]):after {
+	content: "";
+	position: absolute;
+	top: 42%;
+	left: 50%;
+	width: 16px;
+	height: 16px;
+	margin-left: -8px;
+}
+
+
+/* Furcas dobles */
+[id^="diente"] [id^="furca"][id$="-a"]:after {
+	content: "";
+	position: absolute;
+	top: 40%;
+	left: 70%;
+	width: 16px;
+	height: 16px;
+}
+
+[id^="diente"] [id^="furca"][id$="-b"]:after {
+	content: "";
+	position: absolute;
+	top: 40%;
+	left: 10%;
+	width: 16px;
+	height: 16px;
+}
+
+
+/* Estados de furca------------------------------- */
+.furca-1:after {
+	content: "\25B3" !important;
+	/*animation: fadeIn 0.5s, zoomIn 0.5s;*/
+}
+
+.furca-2:after {
+	content: "\25ED" !important;
+	/*transition: all .25s ease;*/
+}
+
+.furca-3:after {
+	content: "\25B2" !important;
+}
+
+.furca-instrucc {
+	display: inline-block;
+	position: relative;
+	width: 20px;
+	height: 16px;
+	vertical-align: middle;
+}
+
+.furca-instrucc:after {
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	font-size: 18px;
+	color: #826ef3;
+	line-height: 0.8em;
+}
+
+.furca-instrucc.furca-3:after {
+	transform: scaleX(1.1);
+	margin-left: -2px;
+}
+
+
+
+/* Posiciones furcas ------------------------------ */
+
+#furca14-b:after {
+	top: 50% !important;
+	left: 65% !important;
+}
+
+#furca14-a:after {
+	top: 55% !important;
+	left: 25% !important;
+}
+
+#furca16-b:after {
+	top: 47% !important;
+	left: 70% !important;
+}
+
+#furca16-a:after {
+	top: 55% !important;
+	left: 28% !important;
+}
+
+#furca17-b:after {
+	top: 57% !important;
+	left: 65% !important;
+}
+
+#furca17-a:after {
+	top: 55% !important;
+	left: 28% !important;
+}
+
+#furca18-b:after {
+	top: 55% !important;
+	left: 50% !important;
+}
+
+#furca18-a:after {
+	top: 45% !important;
+	left: 15% !important;
+}
+
+
+#furca24-b:after {
+	top: 55% !important;
+	left: 68% !important;
+}
+
+#furca24-a:after {
+	top: 50% !important;
+	left: 25% !important;
+}
+
+#furca26-b:after {
+	top: 55% !important;
+	left: 70% !important;
+}
+
+#furca26-a:after {
+	top: 47% !important;
+	left: 25% !important;
+}
+
+#furca27-b:after {
+	top: 55% !important;
+	left: 70% !important;
+}
+
+#furca27-a:after {
+	top: 57% !important;
+	left: 35% !important;
+}
+
+#furca28-b:after {
+	top: 45% !important;
+	left: 75% !important;
+}
+
+#furca28-a:after {
+	top: 50% !important;
+	left: 45% !important;
+}
+
+
+#furca28::after {
+	top: 42% !important;
+	left: 53% !important;
+}
+
+#furca27::after {
+	top: 42% !important;
+	left: 53% !important;
+}
+
+#furca26::after {
+	top: 42% !important;
+	left: 53% !important;
+}
+
+
+#furca36::after {
+	top: 40% !important;
+	left: 57% !important;
+}
+
+#furca37::after {
+	top: 40% !important;
+	left: 50% !important;
+}
+
+#furca38::after {
+	top: 40% !important;
+	left: 60% !important;
+}
+
+#furca48::after {
+	top: 42% !important;
+	left: 45% !important;
+}
+
+#furca47::after {
+	top: 40% !important;
+	left: 52% !important;
+}
+
+#furca46::after {
+	top: 40% !important;
+	left: 47% !important;
+}
+
+
+
+#furca36-a:after {
+	top: 45% !important;
+	left: 50% !important;
+}
+
+#furca37-a::after {
+	top: 45% !important;
+	left: 48% !important;
+}
+
+#furca38-a::after {
+	top: 45% !important;
+	left: 57% !important;
+}
+
+
+
+#furca48-a:after {
+	top: 45% !important;
+	left: 50% !important;
+}
+
+#furca47-a:after {
+	top: 40% !important;
+	left: 50% !important;
+}
+
+#furca46-a:after {
+	top: 42% !important;
+	left: 50% !important;
+}
+
+
+
+
+/* SANGRADO 
+ * =================================================================== */
+
+/* botón sangrado */
+[id^="sa"][id$="-a"].bot:after,
+[id^="sa"][id$="-b"].bot:after,
+[id^="sa"][id$="-c"].bot:after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 2px;
+	width: 14px;
+	height: 14px;
+	margin: auto;
+}
+
+@media (max-width: 1024px) {
+
+	[id^="sa"][id$="-a"].bot:after,
+	[id^="sa"][id$="-b"].bot:after,
+	[id^="sa"][id$="-c"].bot:after {
+		max-width: calc(100% - 4px);
+	}
+}
+
+
+[id^="sa"]:after {
+	animation: fadeIn 0.5s, zoomIn 0.5s;
+	background-size: 100% 200% !important;
+	transition: all .25s ease;
+}
+
+[id^="sa"].sangrado:after {
+	background: radial-gradient(circle, var(--bs-danger) 30%, transparent 35%);
+	background-position: 0% 50%;
+}
+
+[id^="sa"].sangrado2:after {
+	background: linear-gradient(0deg, transparent 40%, var(--bs-danger) 40%, var(--bs-danger) 70%, transparent 70%);
+	background-position: 0% 40%;
+}
+
+[id^="sa"].sangrado3:after {
+	background: linear-gradient(0deg, var(--bs-danger) 50%, var(--bs-danger) 50%);
+	background-position: 0% 100%;
+}
+
+
+.sangrado-instrucc {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.sangrado-instrucc:after {
+	content: "";
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	animation: fadeIn 0.5s, zoomIn 0.5s;
+	background-size: 100% 200% !important;
+	background-position: 0% 0%;
+	transition: all .25s ease;
+}
+
+.sangrado-instrucc.sangrado:after {
+	background: radial-gradient(circle, var(--bs-danger) 30%, transparent 35%);
+	background-position: 0% 50%;
+}
+
+.sangrado-instrucc.sangrado2:after {
+	background: linear-gradient(0deg, transparent 40%, var(--bs-danger) 40%, var(--bs-danger) 70%, transparent 70%);
+	background-position: 0% 40%;
+}
+
+.sangrado-instrucc.sangrado3:after {
+	background: linear-gradient(0deg, var(--bs-danger) 50%, var(--bs-danger) 50%);
+	background-position: 0% 100%;
+}
+
+
+
+
+
+/*  SUPURACIÓN 
+ * =================================================================== */
+
+/* botón supuración */
+[id^="su"][id$="-a"].bot:after,
+[id^="su"][id$="-b"].bot:after,
+[id^="su"][id$="-c"].bot:after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 2px;
+	width: 14px;
+	height: 14px;
+	margin: auto;
+}
+
+@media (max-width: 1024px) {
+
+	[id^="su"][id$="-a"].bot:after,
+	[id^="su"][id$="-b"].bot:after,
+	[id^="su"][id$="-c"].bot:after {
+		max-width: calc(100% - 4px);
+	}
+}
+
+
+[id^="su"]:after {
+	animation: fadeIn 0.5s, zoomIn 0.5s;
+	background-size: 100% 200% !important;
+	transition: all .25s ease;
+}
+
+[id^="su"].supuracion:after {
+	background: linear-gradient(180deg, transparent 50%, var(--bs-warning) 50%);
+	background-position: 0% 100%;
+}
+
+
+.supuracion-instrucc {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.supuracion-instrucc:after {
+	content: "";
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	animation: fadeIn 0.5s, zoomIn 0.5s;
+	background-size: 100% 200% !important;
+	background-position: 0% 0%;
+	transition: all .25s ease;
+}
+
+.supuracion-instrucc.supuracion:after {
+	background: linear-gradient(180deg, transparent 50%, var(--bs-warning) 50%);
+	background-position: 0% 100%;
+}
+
+
+
+
+
+
+/* PLACA
+ * =================================================================== */
+
+/* botón Placa */
+[id^="p"][id$="-a"].bot:after,
+[id^="p"][id$="-b"].bot:after,
+[id^="p"][id$="-c"].bot:after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 2px;
+	width: 14px;
+	height: 14px;
+	margin: auto;
+}
+
+[id^="p"].placa-on:after {
+	animation: fadeIn 0.5s, zoomIn 0.5s;
+	background: #6495ed;
+	transition: all .25s ease;
+}
+
+
+
+
+
+
+
+
+/** 
+ * ANIMACIONES
+ * ======================================================================== */
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes zoomIn {
+	0% {
+		transform: scale(1.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+
+
+/**
+ * IMÁGENES DIENTES
+ * ======================================================================== */
+
+.diente-eliminado {
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+
+[id^="diente"] {
+	position: relative;
+	margin: auto;
+}
+
+/* td contendor de diente y gáfica */
+.diente-and-chart-container {
+	position: relative;
+	height: 160px;
+	text-align: center;
+}
+#tabla-1 .diente-and-chart-container,
+#tabla-2 .diente-and-chart-container,
+#tabla-3 .diente-and-chart-container,
+#tabla-4 .diente-and-chart-container {
+	background-image: url(/img/background-up.png);
+	background-repeat: repeat-x;
+	background-size: 57px;
+	/* width auto, height 200px */
+	background-position: top;
+}
+
+#tabla-5 .diente-and-chart-container,
+#tabla-6 .diente-and-chart-container,
+#tabla-7 .diente-and-chart-container,
+#tabla-8 .diente-and-chart-container {
+	background-image: url(/img/background-down.png);
+	background-repeat: repeat-x;
+	background-size: 66px;
+	/* width auto, height 200px */
+	background-position: top;
+}
+/* línea divisoria diente-encía */
+.diente-and-chart-container:after {
+	content: "";
+	height: 2px;
+	background: rgba(253, 0, 54, 0.2);
+	width: 100%;
+	position: absolute;
+	top: 90px;
+	transform: translateX(-50%);
+}
+
+.chart-container {
+	position: absolute;
+	height: 100px;
+	top: 41px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 10;
+}
+
+
+/* Piezas B */
+.diente-and-chart-container.piezab:after {
+	top: 65px;
+}
+
+.diente-and-chart-container.piezab .chart-container {
+	top: 15px;
+	transform: translateX(-50%) rotateX(180deg);
+}
+
+
+/* Canvas gráfica */
+canvas[id^="visualization"] {
+	width: 60px;
+}
+
+
+
+/**
+ * IMÁGENES DIENTES
+ * ----------------------------------------------- */
+div[id^='diente'] {
+	height: 155px;
+	width: auto
+}
+
+/* Recoloca dientes si es iPad */
+@media (max-width: 979px) and (orientation: portrait) {
+	div[id^='diente'][id*='b-a'] img {
+		margin-top: 40%;
+	}
+
+	div[id^='diente']:not(div[id*='b-a']) img {
+		margin-top: 80%;
+	}
+}
+
+
+
+
+/**
+ * CAMBIOS EN ORIENTACIÓN DIENTES EN LAS ZONAS LINGUALES
+ * después de fase feedbacks de doctores
+ * 3 nov 2022
+ * ========================================================
+ */
+
+/** SUPERIOR ------------------- */
+
+/* Eliminada rotación vertical del chart y restaura posición vertical */
+#tabla-superior .diente-and-chart-container.piezab .chart-container {
+	top: 41px;
+	transform: translateX(-50%);
+}
+
+/* Añadida rotación vertical del diente (y furcas) */
+#tabla-superior .diente-and-chart-container.piezab div[id^="diente"] {
+	transform: translateY(0) rotateX(180deg);
+}
+
+/* Eliminada (restaurada) posición más elevada de la línea de chart */
+#tabla-superior .diente-and-chart-container.piezab:after {
+	top: 90px;
+}
+
+/* Furcas Palatino */
+#tabla-superior .diente-and-chart-container.piezab div[id^="furca"]::after {
+	transform: rotateX(180deg) scale(1.2);
+}
+
+
+/** INFERIOR ------------------- */
+
+/* Añade rotación vertical del chart */
+#tabla-inferior .diente-and-chart-container:not(.piezab) .chart-container {
+	top: 15px;
+	transform: translateX(-50%) rotateX(180deg);
+}
+
+/* Añadida rotación vertical del diente (y furcas) */
+#tabla-inferior .diente-and-chart-container:not(.piezab) div[id^="diente"] {
+	transform: translateY(0) rotateX(180deg);
+}
+
+/* Eliminada (restaurada) posición más elevada de la línea de chart */
+#tabla-inferior .diente-and-chart-container:not(.piezab):after {
+	top: 65px;
+}
+
+/* Furcas Lingual */
+#tabla-inferior .diente-and-chart-container:not(.piezab) div[id^="furca"]::after {
+	transform: rotateX(180deg) scale(1.2);
+}
+
+
+
+.diente-and-chart-container div[id^="furca"]::after {
+	transform: scale(1.2);
+}
+
+
+
+
+/**
+ * BOOTSTRAP
+ * ======================================================================== */
+
+.form-control::-webkit-input-placeholder,
+.form-control::placeholder,
+.form-control::-ms-input-placeholder,
+.form-control:-ms-input-placeholder,
+.form-control::-moz-placeholder,
+.form-control:-moz-placeholder {
+	color: var(--color-table-line) !important;
+}
+
+.form-floating>label,
+.form-floating>.form-control~label {
+	opacity: .65 !important;
+	font-size: .9em;
+	line-height: 1.8em;
+}
+
+/* Alert
+---------------------------------------------------------- */
+#liveAlertPlaceholder {
+	z-index: 99999 !important;
+}
+
+.alert {
+	border-radius: 1px;
+	box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+}
+
+.alert.alert-danger {
+	background-color: var(--bs-danger);
+	color: white;
+}
+
+.alert.alert-info {
+	background-color: var(--bs-info);
+	color: white;
+}
+
+.alert.alert-warning {
+	background-color: var(--bs-warning);
+	color: white;
+}
+
+.alert.alert-success {
+	background-color: var(--bs-success);
+	color: white;
+}
+
+
+/* Botones
+---------------------------------------------------------- */
+.btn,
+input,
+textarea {
+	border-radius: 1px !important;
+}
+
+
+
+/* Selector Dropdown
+---------------------------------------------------------- */
+@media all and (min-width: 992px) {
+	.dropdown {
+		display: none;
+	}
+
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+}
+
+.dropdown .dropdown-menu .dropdown-item:active,
+.dropdown .dropdown-menu .dropdown-item.active {
+	background-color: var(--dropdown-link-active-bg) !important;
+}
+
+
+/* Modal
+---------------------------------------------------------- */
+.modal-content {
+	border-radius: 1px !important;
+}
+
+
+
+
+
+
+
+
+/**
+ * Alerta de no visible en móviles 
+ * ----------------------------------------------- */
+#alert-nomobile {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 111555;
+	background-color: #f3064d;
+	color: #fff;
+	padding: 20px;
+	font-family: 'Poppins', 'sans-serif';
+}
+
+#alert-nomobile h3 {
+	font-weight: 600;
+}
+
+#alert-nomobile p {
+	font-size: 1.2rem;
+}
+
+@media (max-width: 767px) {
+	#bottom-bar {
+		display: none;
+	}
+
+	#alert-nomobile {
+		display: block;
+	}
+
+	#alert-nomobile .msg {
+		display: flex;
+		height: 70%;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+
+
+
+
+
+
+
+/** PRINT 
+ * reglas CSS específicas para imprimir
+ * =========================================================================== */
+.page-break-print {
+	color: transparent !important;
+	font-size: 1px;
+	line-height: 0;
+}
+
+.to-print {
+	display: none;
+}
+
+.textarea-fake {
+	padding: 1rem .75rem;
+	font-size: .875rem;
+	border: 1px solid #ced4da;
+	color: #212529;
+	background-color: white;
+	white-space: pre-wrap;
+}
+
+.fake-select-pi {
+	display: none;
+	font-size: 9px;
+	text-align: center;
+	width: 100%;
+}
+
+#leyenda {
+	padding-top: 30px;
+	font-size: 9px;
+}
+
+#notas {
+	font-size: 9px;
+	padding: 1rem .75rem;
+}
+
+@media print {
+	body {
+		background-color: white;
+	}
+
+	#datos-paciente {
+		margin-top: 20px;
+	}
+
+	.titulo {
+		width: 20px;
+		min-width: 20px;
+		max-width: 20px;
+		font-size: 8px;
+	}
+
+	.num-tooth {
+		font-size: 10px;
+	}
+
+	.titulo-area-superiorinferior {
+		margin-top: 0;
+	}
+
+	.titulo-area-superiorinferior h3 {
+		margin-left: -30px;
+	}
+
+	.diente-and-chart-container {
+		height: 120px;
+	}
+
+	div[id^='diente'] {
+		height: fit-content;
+	}
+
+	#bottom-bar {
+		display: block;
+		position: relative !important;
+		box-shadow: none;
+		font-size: 10px;
+		margin-bottom: 20px;
+	}
+
+	#bottom-bar .container {
+		max-width: 100%;
+	}
+
+	.no-print {
+		height: 1px !important;
+		max-height: 1px !important;
+		overflow: hidden !important;
+	}
+
+	.to-print {
+		display: block;
+	}
+
+	.page-break-print {
+		clear: both;
+		page-break-after: always;
+		break-after: always;
+	}
+
+	#alert-nomobile,
+	.diente-and-chart-container:after,
+	.tooltip,
+	.no-print {
+		display: none;
+	}
+
+
+
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+	@media print {
+
+		@page {
+			margin: 2cm 1cm;
+		}
+
+		#datos-paciente {
+			/*margin-bottom:30px;*/
+		}
+
+		#datos-paciente .container {
+			max-width: 100% !important;
+		}
+
+		/* Aumenta grosor para que se vea en la previsualización */
+		table tr td.borde {
+			border: 2px solid var(--color-table-line);
+		}
+	}
+}
